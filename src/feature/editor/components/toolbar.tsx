@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { BsBorderWidth } from "react-icons/bs";
 import { ArrowDown, ArrowUpIcon } from "lucide-react";
+import { RxTransparencyGrid } from "react-icons/rx";
 
 interface ToolbarProps {
   editor: Editor | undefined;
@@ -81,6 +82,18 @@ const Toolbar = ({ editor, activeTool, onChangeActiveTool }: ToolbarProps) => {
             variant={"ghost"}
           >
             <ArrowDown />
+          </Button>
+        </Hint>
+        <Hint label="Opacity">
+          <Button
+            onClick={() => {
+              onChangeActiveTool("opacity");
+            }}
+            size={"icon"}
+            variant={"ghost"}
+            className={cn(activeTool === "opacity" && "bg-gray-100")}
+          >
+            <RxTransparencyGrid />
           </Button>
         </Hint>
       </div>
