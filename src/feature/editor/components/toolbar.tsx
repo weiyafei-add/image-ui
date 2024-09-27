@@ -4,6 +4,7 @@ import Hint from "@/components/hint";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { BsBorderWidth } from "react-icons/bs";
+import { ArrowDown, ArrowUpIcon } from "lucide-react";
 
 interface ToolbarProps {
   editor: Editor | undefined;
@@ -58,6 +59,28 @@ const Toolbar = ({ editor, activeTool, onChangeActiveTool }: ToolbarProps) => {
             className={cn(activeTool === "stroke-width" && "bg-gray-100")}
           >
             <BsBorderWidth />
+          </Button>
+        </Hint>
+        <Hint label="Stroke Color">
+          <Button
+            onClick={() => {
+              editor?.bringForwards();
+            }}
+            size={"icon"}
+            variant={"ghost"}
+          >
+            <ArrowUpIcon />
+          </Button>
+        </Hint>
+        <Hint label="Stroke Color">
+          <Button
+            onClick={() => {
+              editor?.sendBackwards();
+            }}
+            size={"icon"}
+            variant={"ghost"}
+          >
+            <ArrowDown />
           </Button>
         </Hint>
       </div>

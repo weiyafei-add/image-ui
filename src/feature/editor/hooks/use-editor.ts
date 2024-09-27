@@ -9,6 +9,7 @@ import {
   RECTANGLE_OPTIONS,
   SOFT_RECTANGLE_OPTIONS,
   STROKE_COLOR,
+  STROKE_DASH_ARRAY,
   STROKE_WIDTH,
   TRIANGLE_OPTIONS,
 } from "../types";
@@ -24,6 +25,8 @@ const buildEditor = ({
   strokeWidth,
   fillColor,
   selectObject,
+  strokeDashArray,
+  setStrokeDashArray,
 }: BuildEditorProps): Editor => {
   const getWorkspace = () => {
     return canvas.getObjects().find((object) => object.name === "clip");
@@ -41,6 +44,17 @@ const buildEditor = ({
   };
 
   return {
+    bringForwards: () => {
+      canvas.getActiveObjects().forEach((object) => {
+        object.bringForward();
+      });
+    },
+    sendBackwards: () => {
+      canvas.getActiveObjects().forEach((object) => {
+        object.sendBackwards();
+      });
+      getWorkspace()?.sendBackwards();
+    },
     changeFillColor: (value: string) => {
       setFillColor(value);
       canvas.getActiveObjects().forEach((object) => {
@@ -52,6 +66,13 @@ const buildEditor = ({
       setStrokeWidth(width);
       canvas.getActiveObjects().forEach((object) => {
         object.set({ strokeWidth: width });
+      });
+      canvas.renderAll();
+    },
+    changeStrokeDashArray: (value: number[]) => {
+      setStrokeDashArray(value);
+      canvas.getActiveObjects().forEach((object) => {
+        object.set({ strokeDashArray: value });
       });
       canvas.renderAll();
     },
@@ -140,7 +161,7 @@ const buildEditor = ({
         return strokeWidth;
       }
 
-      return selectedObject.get("stroke") || strokeWidth;
+      return selectedObject.get("strokeWidth") || strokeWidth;
     },
     fillColor,
     canvas,
@@ -161,6 +182,14 @@ const buildEditor = ({
 
       return (selectedObject.get("stroke") as string) || strokeColor;
     },
+    getActiveStrokeDashArray: () => {
+      const selectedObject = selectObject[0];
+      if (!selectedObject) {
+        return strokeDashArray;
+      }
+
+      return selectedObject.get("strokeDashArray") || strokeDashArray;
+    },
   };
 };
 
@@ -172,6 +201,7 @@ export const useEditor = (props: { onClearSelection: () => void }) => {
   const [fillColor, setFillColor] = useState(FILL_COLOR);
   const [strokeColor, setStrokeColor] = useState(STROKE_COLOR);
   const [strokeWidth, setStrokeWidth] = useState(STROKE_WIDTH);
+  const [strokeDashArray, setStrokeDashArray] = useState(STROKE_DASH_ARRAY);
 
   useAutoSize({
     canvas,
@@ -195,6 +225,8 @@ export const useEditor = (props: { onClearSelection: () => void }) => {
         setStrokeWidth,
         setFillColor,
         selectObject,
+        setStrokeDashArray,
+        strokeDashArray,
       });
     }
     return undefined;
