@@ -1,3 +1,4 @@
+import { ITextOptions } from "fabric/fabric-impl";
 import * as material from "material-colors";
 
 export const selectionDependentTools = [
@@ -74,6 +75,7 @@ export type Editor = {
   addTriangle: () => void;
   addInverseTriangle: () => void;
   addDiamond: () => void;
+  addText: (value: string, options?: ITextOptions) => void;
   changeFillColor: (color: string) => void;
   getActiveFillColor: () => string;
   getActiveStrokeColor: () => string;
@@ -94,6 +96,8 @@ export const STROKE_COLOR = "rgba(0,0,0,1)";
 export const STROKE_WIDTH = 2;
 export const STROKE_DASH_ARRAY = [];
 export const OPACITY = 1;
+export const FONT_SIZE = 32;
+export const FONT_FAMILY = "Arial";
 
 export const CIRCLE_OPTIONS = {
   width: 100,
@@ -130,4 +134,12 @@ export const TRIANGLE_OPTIONS = {
   width: 100,
   height: 100,
   angle: 0,
+};
+export const TEXT_OPTIONS = {
+  type: "textbox",
+  left: 100,
+  top: 100,
+  fill: FILL_COLOR,
+  fontSize: FONT_SIZE,
+  fontFamily: FONT_FAMILY,
 };
