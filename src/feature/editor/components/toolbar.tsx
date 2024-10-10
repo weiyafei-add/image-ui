@@ -1,5 +1,5 @@
 import React from "react";
-import { Editor } from "../types";
+import { ActiveTool, Editor } from "../types";
 import Hint from "@/components/hint";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -10,7 +10,7 @@ import { RxTransparencyGrid } from "react-icons/rx";
 interface ToolbarProps {
   editor: Editor | undefined;
   activeTool: string;
-  onChangeActiveTool: (type: string) => void;
+  onChangeActiveTool: (tool: ActiveTool) => void;
 }
 
 const Toolbar = ({ editor, activeTool, onChangeActiveTool }: ToolbarProps) => {
