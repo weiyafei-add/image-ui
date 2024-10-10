@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ActiveTool, Editor, OPACITY, STROKE_DASH_ARRAY, STROKE_WIDTH } from "../types";
+import { ActiveTool, Editor, OPACITY } from "../types";
 import { cn } from "@/lib/utils";
 import ToolSidebarHeader from "./tool-sidebar-header";
 import ToolSidebarClose from "./tool-siderbar-close";

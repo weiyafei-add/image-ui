@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ActiveTool, Editor, OPACITY } from "../types";
 import { cn } from "@/lib/utils";
 import ToolSidebarHeader from "./tool-sidebar-header";

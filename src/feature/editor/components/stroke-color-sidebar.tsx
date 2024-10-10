@@ -1,5 +1,5 @@
 import React from "react";
-import { ActiveTool, Editor, FILL_COLOR, STROKE_COLOR } from "../types";
+import { ActiveTool, Editor, STROKE_COLOR } from "../types";
 import { cn } from "@/lib/utils";
 import ToolSidebarHeader from "./tool-sidebar-header";
 import ToolSidebarClose from "./tool-siderbar-close";
