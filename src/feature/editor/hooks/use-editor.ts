@@ -40,7 +40,7 @@ const buildEditor = ({
     const workspace = getWorkspace();
     const center = workspace?.getCenterPoint();
 
-    // @ts-ignore
+    // @ts-expect-error
     canvas._centerObject(object, center);
 
     canvas.add(object);

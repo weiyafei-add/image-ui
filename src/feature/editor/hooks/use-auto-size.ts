@@ -18,7 +18,7 @@ export const useAutoSize = ({ canvas, container }: useAutoSizeProps) => {
     const zoomRatio = 0.85;
     const localWorkspace = canvas.getObjects().find((object) => object.name === "clip");
 
-    // @ts-ignore
+    // @ts-expect-error
     const scale = fabric.util.findScaleToFit(localWorkspace, {
       width,
       height,
