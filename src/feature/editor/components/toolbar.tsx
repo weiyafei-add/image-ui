@@ -10,7 +10,7 @@ import { RxTransparencyGrid } from "react-icons/rx";
 interface ToolbarProps {
   editor: Editor | undefined;
   activeTool: string;
-  onChangeActiveTool: any;
+  onChangeActiveTool: (type: string) => void;
 }
 
 const Toolbar = ({ editor, activeTool, onChangeActiveTool }: ToolbarProps) => {

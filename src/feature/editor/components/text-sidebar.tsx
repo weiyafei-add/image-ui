@@ -1,5 +1,5 @@
 import React from "react";
-import { ActiveTool, Editor, OPACITY } from "../types";
+import { ActiveTool, Editor } from "../types";
 import { cn } from "@/lib/utils";
 import ToolSidebarHeader from "./tool-sidebar-header";
 import ToolSidebarClose from "./tool-siderbar-close";
@@ -13,8 +13,6 @@ interface TextSidebarProps {
 }
 
 const TextSidebar = ({ activeTool, onChangeActiveTool, editor }: TextSidebarProps) => {
-  const initialOpacity = editor?.getActiveOpacity() || OPACITY;
-
   return (
     <aside
       className={cn(

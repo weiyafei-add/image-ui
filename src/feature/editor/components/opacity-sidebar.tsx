@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ActiveTool, Editor, OPACITY } from "../types";
 import { cn } from "@/lib/utils";
 import ToolSidebarHeader from "./tool-sidebar-header";
@@ -6,7 +6,6 @@ import ToolSidebarClose from "./tool-siderbar-close";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
-import { Button } from "@/components/ui/button";
 
 interface OpacitySidebarProps {
   activeTool: ActiveTool;
